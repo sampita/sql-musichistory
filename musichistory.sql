@@ -33,5 +33,10 @@ DELETE FROM Album
 WHERE AlbumId = 23;
 
 -- Write a SELECT query that provides the song titles, album title, and artist name for all of the data you just entered in. Use the LEFT JOIN keyword sequence to connect the tables, and the WHERE keyword to filter the results to the album and artist you added.
-SELECT s.Title as "Song Title", al.Title as "Album Title", ar.ArtistName as "Artist"
-	FROM Song s, Album al, Artist ar;
+SELECT Song.Title as "Song Title", Album.Title as "Album Title", ar.ArtistName as "Artist"
+	FROM Song
+	LEFT JOIN Album
+	ON Song.AlbumId = Album.AlbumId
+	LEFT JOIN Artist ar
+	ON Song.ArtistId = ar.ArtistId
+	WHERE Album.AlbumId = 24;
